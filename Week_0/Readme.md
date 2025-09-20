@@ -100,8 +100,10 @@ gtkwave
 
 ## 📸 Proof of Installation
 
-![Tool Installation Screenshot](screenshot.png)
-
+![image](Week_0/Pictures/yosys.png)
+![image](Week_0/Pictures/iverilog.png)
+![image](Week_0/Pictures/gtkwave.png)
+![image](Week_0/Pictures/neofetch.png)
 ---
 
 ## ✅ Week 0 Deliverables
