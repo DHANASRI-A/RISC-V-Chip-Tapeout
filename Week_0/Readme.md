@@ -112,4 +112,4 @@ gtkwave
 
 ---
 
-Do you want me to also prepare a **separate file** (like `INSTALL_GUIDE.md`) with only installation steps + commands, so your main README stays clean and your juniors/seniors can quickly follow the setup guide?
+
