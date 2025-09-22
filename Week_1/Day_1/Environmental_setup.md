@@ -26,11 +26,6 @@ To begin with the workshop, we first need to set up the working environment.
    git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
    ```
 
----
-
-Now, the environment is ready with the necessary resources, and we can proceed with the upcoming tasks.
-
-```
 
 
 
