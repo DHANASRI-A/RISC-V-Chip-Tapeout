@@ -20,11 +20,25 @@ To begin with the workshop, we first need to set up the working environment.
    ```
 
 3. **Clone the workshop repository**
-   The repository contains all the design files and resources required for the sessions.
 
    ```bash
    git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
    ```
+
+
+### About the Cloned Repository
+
+This repository (**sky130RTLDesignAndSynthesisWorkshop**) provides all the essential files for practicing RTL design and synthesis:
+
+*  **RTL Design Examples** – Verilog codes for various designs.
+*  **Library Modules** – reusable building blocks to support the designs.
+*  **Yosys Run Script** – automates the synthesis process.
+*  **Workshop Material** – part of the Sky130 RTL Design and Synthesis Workshop.
+*  **Complete Flow** – helps understand RTL → Simulation → Synthesis.
+
+---
+
+
 
 
 
