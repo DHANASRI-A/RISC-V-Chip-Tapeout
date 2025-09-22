@@ -34,7 +34,6 @@ This repository (**sky130RTLDesignAndSynthesisWorkshop**) provides all the essen
 *  **Library Modules** – reusable building blocks to support the designs.
 *  **Yosys Run Script** – automates the synthesis process.
 *  **Workshop Material** – part of the Sky130 RTL Design and Synthesis Workshop.
-*  **Complete Flow** – helps understand RTL → Simulation → Synthesis.
 
 ---
 
