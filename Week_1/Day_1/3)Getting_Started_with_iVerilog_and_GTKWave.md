@@ -68,6 +68,8 @@ gtkwave tb_good_mux.vcd
 * **Output:** A waveform window showing all signals in your design.
 * You can observe how **inputs change over time** and how the **outputs respond**, which helps verify the correctness of your design.
 
+![gtkwave](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/0afafaf3d0cf5ee8484965a2ac05daa466b0150b/Week_1/Day_1/Pictures/gtkwave.png)
+
 ---
 
 ### Summary of the Flow
