@@ -105,5 +105,23 @@ GTKWave (View Signals)
 ---
 
 
+### Viewing the Structure of Verilog Files
+
+Open the design file in Mousepad to inspect its structure:
+
+```bash
+mousepad good_mux.v
+```
+
+* Check **module definitions, inputs/outputs, and internal signals**.
+* To view the testbench simultaneously, open it in another window:
+
+```bash
+mousepad tb_good_mux.v
+```
+
+
+
+
 
 
