@@ -14,7 +14,7 @@
 * It contains **logic gates, connections, and primary inputs/outputs**, but not high-level RTL constructs like `always` blocks or `if` statements.
 * This file is the **output of Yosys**.
 
-> *(Include the picture of the netlist here)*
+![yosys](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/b07d02d8e02695935208c37325499bfccc3935b9/Week_1/Day_1/Pictures/Yosys.png)
 
 ---
 
@@ -23,7 +23,7 @@
 * The generated netlist can be **simulated using iVerilog** to verify that synthesis preserved the design behavior.
 * The **same testbench** used for the RTL design can be applied to the netlist.
 
-> *(Include the picture of running the netlist in iVerilog here)*
+![synthesis](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/b07d02d8e02695935208c37325499bfccc3935b9/Week_1/Day_1/Pictures/synthesis%20verification.png)
 
 ---
 
