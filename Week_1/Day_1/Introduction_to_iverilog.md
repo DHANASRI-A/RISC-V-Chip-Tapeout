@@ -5,12 +5,12 @@
 
 ### **Key Concepts:**
 
-#### **1. Simulator**
+### **1. Simulator**
 
 * A simulator is a tool used to **verify and check a design**.
 * In this program, the simulator used is **Icarus Verilog (`iverilog`)**.
 
-#### **2. Testbench**
+### **2. Testbench**
 
 * A testbench is used to **ensure that the design obeys all specifications**.
 * It provides stimulus to the design and observes outputs.
@@ -18,7 +18,7 @@
 
 ![Week_1/Day_1/Pictures/Testbench.png](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/ff26b68227088b1c3e72e9c1073c8cd009f19890/Week_1/Day_1/Pictures/Testbench.png)
 
-#### **3. How Simulation Works**
+### **3. How Simulation Works**
 
 * The simulator continuously **monitors changes in the inputs**.
 * If an input changes, the **output is re-evaluated**.
@@ -26,7 +26,7 @@
 
 ![image](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/ff26b68227088b1c3e72e9c1073c8cd009f19890/Week_1/Day_1/Pictures/Iverilog.png)
 
-### **Notes:**  
+### **Note**  
 > - **A design may have one or more primary inputs or outputs.**  
 > - **A testbench does not have primary inputs or outputs.**
 
@@ -46,7 +46,7 @@ vvp output_file
 gtkwave output_file.vcd
 ```
 
-> 💡 The **VCD file (`.vcd`)** records all signal changes over time and can be visualized using GTKWave to verify RTL functionality before synthesis.
+--> The **VCD file (`.vcd`)** records all signal changes over time and can be visualized using GTKWave to verify RTL functionality before synthesis.
 
 ---
 
