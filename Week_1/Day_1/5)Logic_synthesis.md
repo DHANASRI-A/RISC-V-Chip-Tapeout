@@ -19,8 +19,7 @@
 * This process maps the high-level design into **logic gates and flip-flops** available in the technology library.
 * The **output** of synthesis is a **netlist**, which is a **gate-level representation** of the design.
 
- <br>
-![synthesis process](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/1db990bb1253f71056cf377fae5743dc0f3a0b23/Week_1/Day_1/Pictures/Synthesis%20Process.png)
+![image](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/1db990bb1253f71056cf377fae5743dc0f3a0b23/Week_1/Day_1/Pictures/Synthesis%20Process.png)
 ---
 
 ## `.lib` File (Library)
