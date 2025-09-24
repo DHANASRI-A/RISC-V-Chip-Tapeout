@@ -23,7 +23,7 @@ write_verilog -noattr good_mux_netlist.v
 
 ---
 
-### **Step 2: Command Outputs **
+### **Step 2: Command Outputs**
 
 **1. Set directory to Verilog files**
 
