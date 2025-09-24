@@ -4,7 +4,7 @@
 
 ![illustration](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/6c12526dcb85ed88990b0dc39877de689cab2a79/Week_1/Day_1/Pictures/Synthesis(Illustration).png)
 
-### **Step 1: List of Commands**
+### Step 1: List of Commands 
 
 ```bash
 cd verilog_files
