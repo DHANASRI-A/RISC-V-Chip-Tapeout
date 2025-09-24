@@ -9,6 +9,8 @@
 * **RTL (Register Transfer Level)** design is the **behavioral representation** of the required specification.
 * It describes how **data flows between registers** and how the **logic operates** on that data.
   <br>
+
+---
 ![RTL design](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/1db990bb1253f71056cf377fae5743dc0f3a0b23/Week_1/Day_1/Pictures/RTL%20design.png)
 
 ---
@@ -18,8 +20,10 @@
 * The **RTL code** (written in Verilog) is converted into a **digital logic circuit** during **logic synthesis**.
 * This process maps the high-level design into **logic gates and flip-flops** available in the technology library.
 * The **output** of synthesis is a **netlist**, which is a **gate-level representation** of the design.
-
+  
+---
 ![image](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/1db990bb1253f71056cf377fae5743dc0f3a0b23/Week_1/Day_1/Pictures/Synthesis%20Process.png)
+
 ---
 
 ## `.lib` File (Library)
@@ -32,7 +36,7 @@
   * 3-input AND gates (slow, medium, fast)
   * 4-input AND gates (slow, medium, fast)
   * Flip-flops, inverters, multiplexers, etc.
-
+---
 ![.lib](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/1db990bb1253f71056cf377fae5743dc0f3a0b23/Week_1/Day_1/Pictures/.lib.png)
 
 ---
@@ -41,6 +45,7 @@
 
 Different flavors exist because **delay, power, and area trade-offs** must be managed.
 
+---
 ![Different flavors of gate](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/1db990bb1253f71056cf377fae5743dc0f3a0b23/Week_1/Day_1/Pictures/Different%20flavours%20of%20gate.png)
 
 ---
@@ -85,6 +90,8 @@ Different flavors exist because **delay, power, and area trade-offs** must be ma
 
 **Slow gates → Lower speed but energy-efficient.**
 
+---
+
 ![slow cells](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/810d4dab0aef02d3e7327cb52106e95d02e094c8/Week_1/Day_1/Pictures/slow%20cells.png)
 
 ---
@@ -96,6 +103,7 @@ Different flavors exist because **delay, power, and area trade-offs** must be ma
 | **Fast**     | Low delay cells  | Higher frequency (performance) | Higher power consumption |
 | **Slow**     | High delay cells | Low power consumption          | Lower speed              |
 
+---
 ![Faster vs Slower](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/810d4dab0aef02d3e7327cb52106e95d02e094c8/Week_1/Day_1/Pictures/Faster%20vs%20Slower.png)
 
 ---
