@@ -167,6 +167,4 @@ Verification / Inspection (Mousepad)
 
 ---
 
-If you want, I can **now also combine this with the iVerilog & GTKWave section** in the same style (commands first, screenshots after, table for explanation) so the README is fully professional and ready for Week 0.
 
-Do you want me to do that?
