@@ -85,6 +85,8 @@ Different flavors exist because **delay, power, and area trade-offs** must be ma
 
 **Slow gates → Lower speed but energy-efficient.**
 
+![slow cells](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/810d4dab0aef02d3e7327cb52106e95d02e094c8/Week_1/Day_1/Pictures/slow%20cells.png)
+
 ---
 
 ## Summary
@@ -93,6 +95,8 @@ Different flavors exist because **delay, power, and area trade-offs** must be ma
 | ------------ | ---------------- | ------------------------------ | ------------------------ |
 | **Fast**     | Low delay cells  | Higher frequency (performance) | Higher power consumption |
 | **Slow**     | High delay cells | Low power consumption          | Lower speed              |
+
+![Faster vs Slower](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/810d4dab0aef02d3e7327cb52106e95d02e094c8/Week_1/Day_1/Pictures/Faster%20vs%20Slower.png)
 
 ---
 
