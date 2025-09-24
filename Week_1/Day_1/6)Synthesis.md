@@ -31,7 +31,6 @@ write_verilog -noattr good_mux_netlist.v
 cd verilog_files
 ```
 
-*(Attach screenshot here showing the terminal in `verilog_files` folder)*
 
 ---
 
@@ -41,7 +40,7 @@ cd verilog_files
 read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
-*(Attach screenshot here showing library read successfully)*
+
 
 ---
 
@@ -51,7 +50,7 @@ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog good_mux.v
 ```
 
-*(Attach screenshot here showing RTL read successfully)*
+
 
 ---
 
@@ -61,7 +60,7 @@ read_verilog good_mux.v
 synth -top good_mux
 ```
 
-*(Attach screenshot here showing synthesis progress/output)*
+![image](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/577fca01537cc44cd156572ac023599945fad318/Week_1/Day_1/Pictures/commands.png)
 
 ---
 
@@ -71,7 +70,7 @@ synth -top good_mux
 abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
-*(Attach screenshot here showing mapping completed)*
+
 
 ---
 
@@ -81,7 +80,7 @@ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 show
 ```
 
-*(Attach screenshot of synthesized logic diagram)*
+![output](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/9bea3660bc82807dc22347a3e322bf62ad4490c1/Week_1/Day_1/Pictures/Synthesis%20Output.png)
 
 ---
 
@@ -91,7 +90,7 @@ show
 write_verilog good_mux_netlist.v
 ```
 
-*(Attach screenshot showing file creation)*
+
 
 ---
 
@@ -101,7 +100,7 @@ write_verilog good_mux_netlist.v
 !mousepad good_mux_netlist.v
 ```
 
-*(Attach screenshot of netlist opened in Mousepad)*
+![image](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/9bea3660bc82807dc22347a3e322bf62ad4490c1/Week_1/Day_1/Pictures/show.png)
 
 ---
 
@@ -111,7 +110,7 @@ write_verilog good_mux_netlist.v
 write_verilog -noattr good_mux_netlist.v
 ```
 
-*(Attach screenshot showing simplified netlist creation)*
+
 
 ---
 
@@ -121,7 +120,7 @@ write_verilog -noattr good_mux_netlist.v
 !mousepad good_mux_netlist.v
 ```
 
-*(Attach screenshot of simplified netlist opened in Mousepad)*
+
 
 ---
 
