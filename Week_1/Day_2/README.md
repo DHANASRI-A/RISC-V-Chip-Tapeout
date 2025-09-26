@@ -74,7 +74,6 @@ In this method, the hierarchy is **flattened** — meaning all sub-modules are m
 
 ```bash
 yosys
-
 read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog multiple_modules.v
 synth -top multiple_modules
