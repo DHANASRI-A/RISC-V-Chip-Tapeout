@@ -56,10 +56,6 @@ read_verilog multiple_modules.v
 synth -top multiple_modules
 abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 show multiple_modules   # (screenshot can be added after this step)
-
-write_verilog multiple_modules_hier.v 
-!mousepad multiple_modules_hier.v 
-
 write_verilog -noattr multiple_modules_hier.v 
 !mousepad multiple_modules_hier.v 
 ````
