@@ -88,7 +88,7 @@ write_verilog multiple_modules_flat.v
 !mousepad multiple_modules_flat.v
 ```
 
-*(Add screenshot after this block)*
+![image](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/e20b782e8ff8ad0802150a1c9290779a9427416b/Week_1/Day_2/Pictures/Flatten.png)
 
 ---
 
