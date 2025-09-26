@@ -95,6 +95,4 @@ show
 
 ---
 
-Do you want me to also make the **commands section collapsible** (with `<details>` / `<summary>`), so the README looks even cleaner?
-```
 
