@@ -58,14 +58,14 @@ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog multiple_modules.v 
 synth -top multiple_modules
 abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-show multiple_modules   # (screenshot can be added after this step)
+show multiple_modules
 write_verilog multiple_modules_hier.v 
 !mousepad multiple_modules_hier.v 
 write_verilog -noattr multiple_modules_hier.v 
 !mousepad multiple_modules_hier.v 
 ````
 
-*(Add screenshot after this block)*
+![image](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/397ed8a842d7f353a7d5258ffa7ee999d4fd0569/Week_1/Day_2/Pictures/Hier.png)
 
 ---
 
