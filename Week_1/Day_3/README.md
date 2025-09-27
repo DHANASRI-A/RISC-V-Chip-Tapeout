@@ -7,9 +7,7 @@ This README demonstrates the use of **`opt_clean -purge`** in Yosys for differen
 2. Sequential Logic Optimization  
 3. Unused Logic Optimization  
 
-We focus on observing the difference **before and after** applying `opt_clean -purge`.
 
----
 
 ## Table of Contents
 
@@ -52,14 +50,6 @@ show
 * Optimizes the netlist by **purging dead gates** that do not affect outputs.
 * Helps reduce area and simplify the design.
 
-### Before `opt_clean -purge`
-
-![opt\_check before purge](Images/opt_check_before.png)
-
-### After `opt_clean -purge`
-
-![opt\_check after purge](Images/opt_check_after.png)
-
 ---
 
 ## Sequential Logic Optimization
@@ -88,6 +78,7 @@ yosys
 read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog dff_const1.v
 synth -top dff_const1
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 write_verilog dff_const1_before_purge.v
 opt_clean -purge
@@ -95,13 +86,7 @@ write_verilog dff_const1_after_purge.v
 show
 ```
 
-### Before `opt_clean -purge`
 
-![dff\_const1 before purge](Images/dff_const1_before.png)
-
-### After `opt_clean -purge`
-
-![dff\_const1 after purge](Images/dff_const1_after.png)
 
 ---
 
@@ -144,11 +129,11 @@ show
 
 ### Before `opt_clean -purge`
 
-![counter]([Images/counter_opt_before.png](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/178bc30c4eb7211e4dd9d14af0911505e7c76e53/Week_1/Day_3/Pictures/before.png))
+![before](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/dfa63d41885b399468832d5ba4cf961bb044a859/Week_1/Day_3/Pictures/before.png)
 
 ### After `opt_clean -purge`
 
-![counter]([Images/counter_opt_after.png](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/178bc30c4eb7211e4dd9d14af0911505e7c76e53/Week_1/Day_3/Pictures/after.png))
+![after](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/dfa63d41885b399468832d5ba4cf961bb044a859/Week_1/Day_3/Pictures/after.png)
 
 ---
 
