@@ -113,7 +113,9 @@ endmodule
 
 In branch `2'b01`, `x` is not updated → **latch inferred for `x`**.
 
-*Screenshot here: waveform mismatch*
+![partial](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/77b364428d964020b0581cec7e851e306f4004f7/Week_1/Day_5/Pictures/partial.png)
+
+![case](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/77b364428d964020b0581cec7e851e306f4004f7/Week_1/Day_5/Pictures/partial_case.png)
 
 ---
 
