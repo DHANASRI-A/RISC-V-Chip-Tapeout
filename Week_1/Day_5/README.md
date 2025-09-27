@@ -61,7 +61,9 @@ endmodule
 
 Since `y` is not assigned when `i0 = 0`, synthesis tool inserts a **latch**.
 
-*Screenshot here: Yosys/GTKWave showing latch inference*
+![latch](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/1f35a711b0a19bc324e7190dcb0bd13e76f038fd/Week_1/Day_5/Pictures/pri_statis.png)
+
+![incomp](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/1f35a711b0a19bc324e7190dcb0bd13e76f038fd/Week_1/Day_5/Pictures/incomp_if.png)
 
 ---
 
