@@ -2,10 +2,11 @@
 
 ## Table of Contents
 1. [Understanding the Library](#understanding-the-library)  
-2. [PVT Corners](#pvt-corners)  
-3. [Types of Synthesis](#types-of-synthesis)  
+2. [PVT Corners](#pvt-corners)
+3. [Types of Synthesis](#types-of-synthesis) 
    - [Hierarchical Synthesis](#hierarchical-synthesis)  
-   - [Flat Synthesis](#flat-synthesis)  
+   - [Flat Synthesis](#flat-synthesis)
+4. [Submodule-Level Synthesis](#submodule-level-synthesis)
 
 ---
 
@@ -74,16 +75,13 @@ There are two types of synthesis approaches in Yosys:
 ### Commands:
 ```bash
 yosys
-
 read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog multiple_modules.v 
 synth -top multiple_modules
 abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 show multiple_modules
 write_verilog multiple_modules_hier.v 
-!mousepad multiple_modules_hier.v 
 write_verilog -noattr multiple_modules_hier.v 
-!mousepad multiple_modules_hier.v 
 ````
 
 ![hier](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/57c5946156859e6f9861df0e7054104bfd237163/Week_1/Day_2/Pictures/Hier.png)
@@ -103,7 +101,6 @@ write_verilog -noattr multiple_modules_hier.v
 
 ```bash
 yosys
-
 read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog multiple_modules.v
 synth -top multiple_modules
@@ -111,12 +108,42 @@ flatten
 abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 show
 write_verilog multiple_modules_flat.v
-!mousepad multiple_modules_flat.v
 write_verilog -noattr multiple_modules_flat.v
-!mousepad multiple_modules_flat.v
 ```
 
 ![flatten](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/57c5946156859e6f9861df0e7054104bfd237163/Week_1/Day_2/Pictures/Flatten.png)
 
 ---
+
+
+
+
+## Submodule-Level Synthesis
+
+Sometimes, instead of synthesizing the full top-level design, we may want to synthesize individual **submodules**.  
+This approach is useful when:  
+
+- The **top-level design is very large**, making full synthesis slow or resource-heavy.  
+- A **submodule is instantiated multiple times** in the top design. Synthesizing it once and reusing its netlist avoids redundant work.  
+- It allows for **modular development and debugging**, since each block can be verified independently.  
+- Later, all synthesized submodule netlists can be combined to form the complete design.  
+
+---
+
+### Example: Synthesizing `sub_module1`
+
+**Commands:**
+```bash
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog multiple_modules.v
+synth -top sub_module1
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show sub_module1
+write_verilog sub_module1_netlist.v
+write_verilog -noattr sub_module1_netlist.v
+````
+
+
+
 
