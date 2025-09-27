@@ -137,8 +137,11 @@ endmodule
 
 `2’b10` and `2’b1?` overlap. Different synthesis tools may optimize differently → mismatch risk.
 
-*Screenshot here: Yosys schematic with overlapping logic*
+![image](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/3a9689b72686f05834d6c3fe0076e8fa8642db71/Week_1/Day_5/Pictures/bad_case.png)
 
+![IMAGE](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/3a9689b72686f05834d6c3fe0076e8fa8642db71/Week_1/Day_5/Pictures/b_case.png)
+
+* From the above waveforms we can clearly see that there is simulation synthesis error . 
 ---
 
 ## Looping Constructs
