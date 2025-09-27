@@ -223,8 +223,11 @@ gtkwave tb_blocking_caveat.vcd
 
 **Screenshots:**
 
-* Add RTL waveform here
-* Add GLS waveform here
+* RTL waveform
+![rtl](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/2fd78db6e4e00a6dfb1999fb6ef55b2e16d33a86/Week_1/Day_4/Pictures/3-rtl.png)
+* GLS waveform
+![gls](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/2fd78db6e4e00a6dfb1999fb6ef55b2e16d33a86/Week_1/Day_4/Pictures/3-gls.png)
+  
 
 ---
 
