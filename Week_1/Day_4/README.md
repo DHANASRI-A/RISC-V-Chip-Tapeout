@@ -161,8 +161,10 @@ gtkwave tb_bad_mux.vcd
 
 **Screenshots:**
 
-* Add RTL waveform here
-* Add GLS waveform here
+* RTL waveform
+![rtl](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/b0d0648f0bbc60993b826cda7fb935d4f065f8af/Week_1/Day_4/Pictures/RTL%20bad_mux.png)
+* GLS waveform 
+![gls](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/b0d0648f0bbc60993b826cda7fb935d4f065f8af/Week_1/Day_4/Pictures/GLS%20bad_mux.png)
 
 ---
 
