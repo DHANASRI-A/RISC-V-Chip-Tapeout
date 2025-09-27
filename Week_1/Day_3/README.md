@@ -36,8 +36,10 @@ This module demonstrates combinational logic that can be simplified by removing 
 
 ```bash
 yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog opt_check.v
 synth -top opt_check
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 write_verilog opt_check_before_purge.v  # Netlist before purge
 opt_clean -purge                        # Remove unused logic
 write_verilog opt_check_after_purge.v   # Netlist after purge
@@ -83,8 +85,10 @@ Demonstrates sequential logic optimization where constant assignments can be sim
 
 ```bash
 yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog dff_const1.v
 synth -top dff_const1
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 write_verilog dff_const1_before_purge.v
 opt_clean -purge
 write_verilog dff_const1_after_purge.v
@@ -127,8 +131,10 @@ Shows how unused logic (like higher bits of the counter that are not connected t
 
 ```bash
 yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog counter_opt.v
 synth -top counter_opt
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 write_verilog counter_opt_before_purge.v
 opt_clean -purge
 write_verilog counter_opt_after_purge.v
