@@ -96,8 +96,12 @@ gtkwave tb_ternary_operator_mux.vcd
 
 **Screenshots:**
 
-* Add RTL waveform here
-* Add GLS waveform here
+*  RTL waveform
+  
+![rtl](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/8aaea6ef6832cfa4261003e23dbc6d0b7e3909ab/Week_1/Day_4/Pictures/1.RTL%20waveform.png)
+*  GLS waveform
+  
+![gls](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/8aaea6ef6832cfa4261003e23dbc6d0b7e3909ab/Week_1/Day_4/Pictures/1.GLS%20waveform.png)
 
 ---
 
