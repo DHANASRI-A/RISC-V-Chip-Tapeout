@@ -240,7 +240,6 @@ endmodule
 * `generate for` loop replicates **full adder hardware** automatically.
 * Saves coding effort for large designs like adders, multipliers, shift registers.
 
-*Screenshot here: schematic from Yosys*
 
 ---
 
