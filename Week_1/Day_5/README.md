@@ -239,6 +239,8 @@ endmodule
 
 * `generate for` loop replicates **full adder hardware** automatically.
 * Saves coding effort for large designs like adders, multipliers, shift registers.
+* This generate-for loop automatically instantiates 8 full adders for the 8-bit ripple carry adder.  
+* The final sum output is assembled from the individual full adder outputs and carries.
 
 
 ---
