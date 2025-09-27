@@ -63,7 +63,7 @@ There are two types of synthesis approaches in Yosys:
 1. **Hierarchical Synthesis**  
 2. **Flat Synthesis**
 
----
+
 
 ## Hierarchical Synthesis
 **Explanation:**
