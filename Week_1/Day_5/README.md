@@ -84,7 +84,9 @@ endmodule
 No `default` branch → `y` retains old value when `sel=2’b10` or `2’b11`.
 Hence, latch is inferred.
 
-*Screenshot here: synthesis result with latch*
+![latch](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/a03f5441a47c2f81fca5cd6d2c0ffce36bfc1c8b/Week_1/Day_5/Pictures/case.png)
+
+![incomp](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/a03f5441a47c2f81fca5cd6d2c0ffce36bfc1c8b/Week_1/Day_5/Pictures/incom_case.png)
 
 ---
 
