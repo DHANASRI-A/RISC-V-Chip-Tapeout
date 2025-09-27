@@ -200,11 +200,21 @@ end
 endmodule
 ```
 
-Scalable design using `for` loop.
+### Why Use `for` Loops for Wide MUX/DEMUX Instead of `case` Statements
 
-*Screenshot here: waveform showing correct mux output*
+| Feature                       | `case` Statement                                       | `for` Loop                                               |
+| ----------------------------- | ------------------------------------------------------ | -------------------------------------------------------- |
+| **Scalability**               | Writing 32+ branches is cumbersome                     | Works for any width with minimal code                    |
+| **Error-prone**               | Easy to miss conditions or defaults → inferred latches | Automatically iterates over all indices → fewer mistakes |
+| **Readability & Maintenance** | Long, hard-to-read code                                | Short, clean, and easy to modify                         |
+| **Synthesis Efficiency**      | Can produce redundant logic if not careful             | Synthesizer efficiently unrolls loop into logic          |
 
 ---
+
+ **NOTE:** `for` loops provide **compact, readable, and scalable RTL**, reducing errors and making wide MUX/DEMUX designs easier to maintain, while `case` statements are practical only for small designs.
+
+---
+
 
 ### Generate For Loop – Ripple Carry Adder
 
