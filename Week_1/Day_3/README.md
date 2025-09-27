@@ -43,6 +43,7 @@ opt_clean -purge                        # Remove unused logic
 write_verilog opt_check_after_purge.v   # Netlist after purge
 show
 ```
+![opt_check](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/ebe61b39540ea7e0ae67382c97075df0f498dfac/Week_1/Day_3/Pictures/opt_check.png)
 
 **Explanation of `opt_clean -purge`:**
 
@@ -85,8 +86,7 @@ opt_clean -purge
 write_verilog dff_const1_after_purge.v
 show
 ```
-
-
+![dff_const1](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/ebe61b39540ea7e0ae67382c97075df0f498dfac/Week_1/Day_3/Pictures/dff_const1.png)
 
 ---
 
