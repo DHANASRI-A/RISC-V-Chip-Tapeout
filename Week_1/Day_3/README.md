@@ -144,11 +144,11 @@ show
 
 ### Before `opt_clean -purge`
 
-![counter\_opt before purge](Images/counter_opt_before.png)
+![counter]([Images/counter_opt_before.png](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/178bc30c4eb7211e4dd9d14af0911505e7c76e53/Week_1/Day_3/Pictures/before.png))
 
 ### After `opt_clean -purge`
 
-![counter\_opt after purge](Images/counter_opt_after.png)
+![counter]([Images/counter_opt_after.png](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/178bc30c4eb7211e4dd9d14af0911505e7c76e53/Week_1/Day_3/Pictures/after.png))
 
 ---
 
