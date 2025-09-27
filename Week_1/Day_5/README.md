@@ -2,7 +2,7 @@
 
 # README – If/Case Constructs and Looping Constructs in Verilog
 
-##  Table of Contents
+## Table of Contents
 
 1. [Introduction](#introduction)
 2. [If vs Case](#if-vs-case)
@@ -12,6 +12,7 @@
    * [Partial Case Assignment](#partial-case-assignment)
    * [Overlapping Case Example](#overlapping-case-example)
 4. [Looping Constructs](#looping-constructs)
+   * [Difference between For Loop and Generate For Loop](#difference-between-for-loop-and-generate-for-loop)
    * [4:1 Mux using Case](#41-mux-using-case)
    * [For Loop in Mux](#for-loop-in-mux)
    * [Generate For Loop – Ripple Carry Adder](#generate-for-loop--ripple-carry-adder)
@@ -21,19 +22,26 @@
 
 ## Introduction
 
-In Verilog, conditional constructs (`if` and `case`) and looping constructs (`for` and `generate for`) play an important role in writing efficient RTL code.
-However, if they are not used properly, they may lead to **synthesis issues** such as **inferred latches** or **ambiguous hardware mappings**.
+In Verilog, **conditional constructs** (`if` and `case`) and **looping constructs** (`for` and `generate-for`) are essential for building digital circuits efficiently.
 
-This document explains common pitfalls with examples, and also shows how loops can simplify repetitive hardware design.
+* If/Case statements decide the flow of signals based on conditions.
+* Loops simplify writing repetitive logic and make RTL designs scalable.
+
+However, **improper usage** of these constructs can cause problems such as:
+
+* Inferred latches (unwanted memory elements in combinational logic).
+* Ambiguous or overlapping logic in `case` statements.
+
+This document explores **pitfalls and solutions** with clear examples.
 
 ---
 
 ## If vs Case
 
-* `if` statements → used when **priority** is important (like priority encoders).
-* `case` statements → used when **parallel checking** is required (like multiplexers).
+* **`if` statement** → works on **priority checking**. Used when conditions are checked in sequence (e.g., **priority encoders**).
+* **`case` statement** → works on **parallel checking**. Used when multiple conditions are evaluated independently (e.g., **multiplexers**).
 
-Problem: Incomplete assignments in either construct can cause synthesis tools to infer **latches**, which are not allowed in purely combinational logic.
+**Problem**: Both constructs can cause *inferred latches* if all conditions are not covered.
 
 ---
 
@@ -51,9 +59,9 @@ end
 endmodule
 ```
 
-Since `y` is not assigned when `i0 = 0`, synthesis inserts a **latch**.
+Since `y` is not assigned when `i0 = 0`, synthesis tool inserts a **latch**.
 
-**Screenshot here**: (insert Yosys/GTKwave showing latch inference).
+*Screenshot here: Yosys/GTKWave showing latch inference*
 
 ---
 
@@ -71,9 +79,10 @@ end
 endmodule
 ```
 
-Missing `default` branch → latch inferred when `sel=2’b10` or `2’b11`.
+No `default` branch → `y` retains old value when `sel=2’b10` or `2’b11`.
+Hence, latch is inferred.
 
-**Screenshot here**: synthesis result with latch.
+*Screenshot here: synthesis result with latch*
 
 ---
 
@@ -88,19 +97,19 @@ begin
             y = i0;
             x = i2;
         end
-        2'b01 : y = i1;  //  x missing
+        2'b01 : y = i1;  // x missing
         default : begin
-                   x = i1;
-                   y = i2;
-              end
+            x = i1;
+            y = i2;
+        end
     endcase
 end
 endmodule
 ```
 
- In branch `2’b01`, `x` is not updated → latch inferred for `x`.
+In branch `2'b01`, `x` is not updated → **latch inferred for `x`**.
 
- **Screenshot here**: waveform mismatch.
+*Screenshot here: waveform mismatch*
 
 ---
 
@@ -120,13 +129,26 @@ end
 endmodule
 ```
 
- Here, `2’b10` and `2’b1?` overlap → synthesis tool may optimize differently, causing mismatches.
+`2’b10` and `2’b1?` overlap. Different synthesis tools may optimize differently → mismatch risk.
 
- **Screenshot here**: Yosys `show` output with overlapping logic.
+*Screenshot here: Yosys schematic with overlapping logic*
 
 ---
 
 ## Looping Constructs
+
+In Verilog, loops help reduce repetitive coding.
+
+### Difference between For Loop and Generate For Loop
+
+| Feature              | `for` Loop (inside always block)                | `generate for` Loop (outside always block)           |
+| -------------------- | ----------------------------------------------- | ---------------------------------------------------- |
+| Usage                | For evaluating expressions in procedural blocks | For instantiating hardware multiple times            |
+| Location             | Inside `always` or `initial` block              | Outside procedural blocks                            |
+| Example Applications | Writing scalable multiplexers, encoders         | Creating repeated hardware (adders, shift registers) |
+| Executes At          | Simulation/runtime                              | Elaboration/synthesis time                           |
+
+---
 
 ### 4:1 Mux using Case
 
@@ -147,7 +169,8 @@ end
 endmodule
 ```
 
-Easy for small mux, but **not scalable** for bigger muxes.
+* Works fine for small mux.
+* But not scalable for larger muxes (e.g., 32:1).
 
 ---
 
@@ -168,9 +191,9 @@ end
 endmodule
 ```
 
-Uses a **for loop** to make the mux scalable.
+Scalable design using `for` loop.
 
-**Screenshot here**: waveform showing correct output.
+*Screenshot here: waveform showing correct mux output*
 
 ---
 
@@ -195,20 +218,20 @@ assign sum[8]   = int_co[7];
 endmodule
 ```
 
-**Generate-for loop** is used to replicate hardware instances automatically.
+* `generate for` loop replicates **full adder hardware** automatically.
+* Saves coding effort for large designs like adders, multipliers, shift registers.
 
-**Screenshot here**: schematic from Yosys `show`.
+*Screenshot here: schematic from Yosys*
 
 ---
 
 ## Key Takeaways
 
-* Always use **default cases** in combinational logic.
-* Avoid **incomplete if/case constructs** to prevent inferred latches.
-* Ensure no **overlap in case statements**.
+* Always add **default cases** in combinational logic.
+* Avoid **incomplete if/case** constructs → prevents inferred latches.
+* Ensure **no overlap** in case statements.
 * Use **for loops** for scalable combinational logic.
-* Use **generate-for loops** for instantiating repeated hardware.
+* Use **generate-for loops** to instantiate hardware multiple times.
 
 ---
-
 
