@@ -1,19 +1,22 @@
 
+
 # Logic Optimization with Yosys
 
-This README demonstrates the use of **`opt_clean -purge`** in Yosys for different types of logic optimization:  
+This README demonstrates the use of **`opt_clean -purge`** in Yosys for different types of logic optimization:
 
-1. Combinational Logic Optimization  
-2. Sequential Logic Optimization  
-3. Unused Logic Optimization  
+1. Combinational Logic Optimization
+2. Sequential Logic Optimization
+3. Unused Logic Optimization
 
-
+---
 
 ## Table of Contents
 
-- [Combinational Logic Optimization](#combinational-logic-optimization)
-- [Sequential Logic Optimization](#sequential-logic-optimization)
-- [Unused Logic Optimization](#unused-logic-optimization)
+* [Combinational Logic Optimization](#combinational-logic-optimization)
+* [Sequential Logic Optimization](#sequential-logic-optimization)
+* [Unused Logic Optimization](#unused-logic-optimization)
+* [Optimization Flow](#optimization-flow)
+* [Summary Table](#summary-table)
 
 ---
 
@@ -25,10 +28,10 @@ This README demonstrates the use of **`opt_clean -purge`** in Yosys for differen
 module opt_check (input a , input b , output y);
     assign y = a?b:0;
 endmodule
-````
+```
 
 **Purpose:**
-This module demonstrates combinational logic that can be simplified by removing redundant expressions.
+Demonstrates combinational logic that can be simplified by removing redundant expressions.
 
 **Yosys Commands:**
 
@@ -39,17 +42,18 @@ read_verilog opt_check.v
 synth -top opt_check
 abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 write_verilog opt_check_before_purge.v  # Netlist before purge
-opt_clean -purge                        # Remove unused logic
+opt_clean -purge                        # Remove unused/redundant logic
 write_verilog opt_check_after_purge.v   # Netlist after purge
 show
 ```
-![opt_check](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/ebe61b39540ea7e0ae67382c97075df0f498dfac/Week_1/Day_3/Pictures/opt_check.png)
+
+![opt\_check](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/db085dd141e22a304d37adfb0bac71a97d757c9d/Week_1/Day_3/Pictures/opt_check.png)
 
 **Explanation of `opt_clean -purge`:**
 
 * Removes **unused logic** and redundant connections.
-* Optimizes the netlist by **purging dead gates** that do not affect outputs.
-* Helps reduce area and simplify the design.
+* Optimizes the netlist by **purging dead gates**.
+* Reduces area and simplifies design.
 
 ---
 
@@ -70,7 +74,7 @@ endmodule
 ```
 
 **Purpose:**
-Demonstrates sequential logic optimization where constant assignments can be simplified.
+Simplifies sequential logic with constant assignments.
 
 **Yosys Commands:**
 
@@ -86,7 +90,8 @@ opt_clean -purge
 write_verilog dff_const1_after_purge.v
 show
 ```
-![dff_const1](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/ebe61b39540ea7e0ae67382c97075df0f498dfac/Week_1/Day_3/Pictures/dff_const1.png)
+
+![dff\_const1](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/db085dd141e22a304d37adfb0bac71a97d757c9d/Week_1/Day_3/Pictures/dff_const1.png)
 
 ---
 
@@ -110,7 +115,7 @@ endmodule
 ```
 
 **Purpose:**
-Shows how unused logic (like higher bits of the counter that are not connected to outputs) can be removed.
+Removes unused logic (higher bits of the counter not driving outputs).
 
 **Yosys Commands:**
 
@@ -126,23 +131,40 @@ write_verilog counter_opt_after_purge.v
 show
 ```
 
-
 ### Before `opt_clean -purge`
 
-![before](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/dfa63d41885b399468832d5ba4cf961bb044a859/Week_1/Day_3/Pictures/before.png)
+![before](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/db085dd141e22a304d37adfb0bac71a97d757c9d/Week_1/Day_3/Pictures/before.png)
 
 ### After `opt_clean -purge`
 
-![after](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/dfa63d41885b399468832d5ba4cf961bb044a859/Week_1/Day_3/Pictures/after.png)
+![after](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/db085dd141e22a304d37adfb0bac71a97d757c9d/Week_1/Day_3/Pictures/after.png)
+
+---
+
+## Optimization Flow
+
+```
+RTL Code → Synthesis → Netlist → opt_clean -purge → Optimized Netlist
+```
+
+
+---
+
+## Summary Table
+
+| Optimization Type | Example Module | What is Optimized                  |
+| ----------------- | -------------- | ---------------------------------- |
+| Combinational     | `opt_check`    | Redundant expressions, logic gates |
+| Sequential        | `dff_const1`   | Constant assignments, DFF behavior |
+| Unused Logic      | `counter_opt`  | Wires/reg not driving outputs      |
 
 ---
 
 **Conclusion:**
 
-* The **`opt_clean -purge`** command is essential for cleaning up the netlist after synthesis.
-* It removes **unused or redundant logic**, reduces area, and simplifies designs.
+* **`opt_clean -purge`** is essential for cleaning up synthesized netlists.
+* Removes **unused or redundant logic**, reduces area, and simplifies designs.
 * Applying this command makes designs more **efficient and professional** before technology mapping or further optimizations.
-
 
 ---
 
