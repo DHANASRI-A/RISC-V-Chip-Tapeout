@@ -7,6 +7,7 @@
    - [Hierarchical Synthesis](#hierarchical-synthesis)  
    - [Flat Synthesis](#flat-synthesis)
 4. [Submodule-Level Synthesis](#submodule-level-synthesis)
+5. [DFF with Asynchronous Reset](#dff-with-asynchronous-reset)
 
 ---
 
@@ -143,6 +144,89 @@ show sub_module1
 write_verilog sub_module1_netlist.v
 write_verilog -noattr sub_module1_netlist.v
 ````
+
+## **DFF with Asynchronous Reset**
+
+### **Verilog Code**
+
+```verilog
+module dff_asyncres (
+    input clk,
+    input async_reset,
+    input d,
+    output reg q
+);
+always @ (posedge clk, posedge async_reset) begin
+    if (async_reset)
+        q <= 1'b0;
+    else    
+        q <= d;
+end
+endmodule
+```
+
+**Explanation:**
+
+* `clk` → Rising edge triggers data capture.
+* `async_reset` → Immediately resets `q` to `0` when high, independent of the clock.
+* `d` → Data input.
+* `q` → Output of the flip-flop.
+
+Asynchronous reset **has higher priority** than the clock edge.
+
+---
+
+### **Synthesis Commands**
+
+```bash
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog dff_asyncres.v
+synth -top dff_asyncres
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+write_verilog dff_asyncres_net.v
+write_verilog -noattr dff_asyncres_net.v
+```
+
+---
+
+### **Why We Use `dfflibmap`**
+
+* Maps **generic Yosys flip-flops** to **library-specific DFFs** available in `sky130_fd_sc_hd__tt_025C_1v80.lib`.
+* Ensures DFFs meet **timing, area, and power constraints**.
+* Produces a **technology-mapped netlist** ready for place-and-route tools.
+
+Without `dfflibmap`, the synthesized DFF would remain **generic** and not optimized for the target library.
+
+---
+
+### **Waveform **
+
+After synthesis, simulate `dff_asyncres_net.v` to check:
+
+* `q` follows `d` on **rising clock edges**.
+* `q` resets **immediately** when `async_reset` is high.
+
+This confirms that the **hardware-mapped DFF behaves correctly**.
+
+---
+
+### **Other DFF Variants**
+
+The **same synthesis flow** applies to:
+
+| DFF Variant    | Description                |
+| -------------- | -------------------------- |
+| `dff_syncres`  | DFF with synchronous reset |
+| `dff_asyncset` | DFF with asynchronous set  |
+| `dff_syncset`  | DFF with synchronous set   |
+
+**Only the Verilog module name changes**; commands and flow remain the same.
+
+---
+
 
 
 
