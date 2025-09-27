@@ -131,6 +131,8 @@ This approach is useful when:
 
 ---
 
+
+
 ### Example: Synthesizing `sub_module1`
 
 **Commands:**
@@ -176,6 +178,8 @@ Asynchronous reset **has higher priority** than the clock edge.
 
 ---
 
+
+
 ### **Synthesis Commands**
 
 ```bash
@@ -210,6 +214,12 @@ After synthesis, simulate `dff_asyncres_net.v` to check:
 * `q` resets **immediately** when `async_reset` is high.
 
 This confirms that the **hardware-mapped DFF behaves correctly**.
+
+``` bash
+iverilog dff_asyncres.v tb_dff_asyncres.v
+./a.out
+gtkwave tb_dff_asyncres.vcd
+````
 
 ---
 
