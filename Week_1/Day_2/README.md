@@ -202,7 +202,7 @@ Without `dfflibmap`, the synthesized DFF would remain **generic** and not optimi
 
 ---
 
-### **Waveform **
+### Waveform 
 
 After synthesis, simulate `dff_asyncres_net.v` to check:
 
