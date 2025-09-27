@@ -221,6 +221,8 @@ iverilog dff_asyncres.v tb_dff_asyncres.v
 gtkwave tb_dff_asyncres.vcd
 ````
 
+![wavefrom](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/4ce45eb0673e6a16ce3a7ef1510bd1047993ee06/Week_1/Day_2/Pictures/waveform.png)
+
 ---
 
 ### **Other DFF Variants**
