@@ -6,39 +6,56 @@
 3. [Types of Synthesis](#types-of-synthesis)  
    - [Hierarchical Synthesis](#hierarchical-synthesis)  
    - [Flat Synthesis](#flat-synthesis)  
-4. [Comparison: Hierarchical vs Flat Synthesis](#comparison-hierarchical-vs-flat-synthesis)  
 
 ---
 
 ## Understanding the Library
-The library name used is:
+
+The standard cell library used in synthesis is:  
 
 ```
 
 sky130_fd_sc_hd__tt_025C_1v80.lib
 
-````
+```
 
-**Breakdown of the name:**
-- **tt** → Typical corner  
-- **025C** → Temperature (25°C)  
-- **1v80** → Voltage (1.80 V)  
+### Breakdown of the Name
+- **sky130_fd_sc_hd** → SkyWater 130nm, standard cell, high-density variant.  
+- **tt** → *Typical process corner* (average transistor behavior).  
+- **025C** → Characterized at **25°C** operating temperature.  
+- **1v80** → Characterized at **1.80 V** supply voltage.  
 
-This library contains information about **cell timing, power, and functionality**.  
-It is crucial for mapping RTL code to actual hardware cells.
+This `.lib` file provides detailed information about each cell such as:  
+- Logic functionality (e.g., AND, OR, Flip-Flop).  
+- Timing characteristics (delays, setup/hold times).  
+- Power consumption.  
+- Area footprint.  
+
+During synthesis, Yosys maps the RTL design onto these cells to create a **gate-level netlist** that reflects real hardware.
 
 ---
 
 ## PVT Corners
-**PVT stands for:**
-- **P** → Process  
-- **V** → Voltage  
-- **T** → Temperature  
 
-These three parameters define how the design behaves under different manufacturing and environmental conditions.  
-They are very important for ensuring that the design works in all possible scenarios.
+**PVT = Process, Voltage, Temperature** — the three key parameters that affect circuit behavior:  
+
+- **Process (P):** Accounts for manufacturing variations (fast, typical, slow transistors).  
+- **Voltage (V):** Supply voltage fluctuations (e.g., 1.62 V – 1.98 V around 1.80 V nominal).  
+- **Temperature (T):** Operating range from low (e.g., -40°C) to high (e.g., 125°C).  
+
+Designs must be verified across multiple PVT corners to ensure they meet **timing, power, and reliability requirements** under all real-world conditions.  
+
+### Example PVT Corners
+
+| Corner | Process | Voltage | Temperature | Usage |
+|--------|---------|---------|-------------|-------|
+| **FF** | Fast    | 1.98 V  | -40°C       | Best-case delay (fastest) |
+| **TT** | Typical | 1.80 V  | 25°C        | Nominal operating point |
+| **SS** | Slow    | 1.62 V  | 125°C       | Worst-case delay (slowest) |
 
 ---
+
+
 
 ## Types of Synthesis
 There are two types of synthesis approaches in Yosys:
@@ -48,11 +65,16 @@ There are two types of synthesis approaches in Yosys:
 ---
 
 ## Hierarchical Synthesis
-In this method, the design hierarchy (**modules inside modules**) is preserved during synthesis.  
+**Explanation:**
+- Preserves the module hierarchy (each sub-module remains separate).  
+- Makes debugging and analysis easier.  
+- Useful for modular design and incremental development.  
+- Optimizations happen within each module independently.  
 
 ### Commands:
 ```bash
 yosys
+
 read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog multiple_modules.v 
 synth -top multiple_modules
@@ -64,18 +86,24 @@ write_verilog -noattr multiple_modules_hier.v
 !mousepad multiple_modules_hier.v 
 ````
 
-![image](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/397ed8a842d7f353a7d5258ffa7ee999d4fd0569/Week_1/Day_2/Pictures/Hier.png)
+![hier](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/57c5946156859e6f9861df0e7054104bfd237163/Week_1/Day_2/Pictures/Hier.png)
 
 ---
 
 ## Flat Synthesis
 
-In this method, the hierarchy is **flattened** — meaning all sub-modules are merged into a single-level netlist.
+**Explanation:**
+
+* Flattens the hierarchy into a single-level netlist.
+* Provides better **global optimization** across modules.
+* Less readable, but efficient for final design stages.
+* Often used before tape-out for best performance.
 
 ### Commands:
 
 ```bash
 yosys
+
 read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog multiple_modules.v
 synth -top multiple_modules
@@ -88,20 +116,7 @@ write_verilog -noattr multiple_modules_flat.v
 !mousepad multiple_modules_flat.v
 ```
 
-![image](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/e20b782e8ff8ad0802150a1c9290779a9427416b/Week_1/Day_2/Pictures/Flatten.png)
+![flatten](https://github.com/DHANASRI-A/RISC-V-Chip-Tapeout/blob/57c5946156859e6f9861df0e7054104bfd237163/Week_1/Day_2/Pictures/Flatten.png)
 
 ---
-
-## Comparison: Hierarchical vs Flat Synthesis
-
-| Feature              | Hierarchical Synthesis                | Flat Synthesis                              |
-| -------------------- | ------------------------------------- | ------------------------------------------- |
-| **Hierarchy**        | Preserves module hierarchy            | Flattens all modules into one level         |
-| **Readability**      | Easier to debug and analyze           | More difficult to read/debug                |
-| **Optimization**     | Optimized within modules only         | Better global optimization possible         |
-| **Compilation Time** | Faster (smaller sub-problems)         | Slower (entire design optimized together)   |
-| **Use Case**         | Good for modular design and debugging | Good for final optimization before tape-out |
-
----
-
 
